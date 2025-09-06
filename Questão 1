@@ -1,0 +1,70 @@
+using System;
+
+public class Pagamento{
+
+    public virtual void ProcessarPagamento()
+    {
+
+        Console.WriteLine("Processar pagamento");
+
+    }
+ 
+}
+public class CartaoCredito : Pagamento
+{
+
+    public override void ProcessarPagamento()
+    {
+
+        Console.WriteLine("Pagamento no credito");
+
+    }
+
+}
+public class BoletoBancario : Pagamento
+{
+
+    public override void ProcessarPagamento()
+    {
+
+        Console.WriteLine("Pagamento no boleto");
+
+    }
+
+}
+
+public class Pix : Pagamento
+{
+
+    public override void ProcessarPagamento()
+    {
+
+        Console.WriteLine("Pagamento no Pix");
+
+    }
+
+}
+public class Program
+{
+
+    static void Main()
+    {
+
+        List<Pagamento> pagamento = new List<Pagamento>
+        {
+            new BoletoBancario(),
+            new Pix(),
+            new CartaoCredito()
+        };
+
+        foreach (Pagamento p in pagamento)
+        {
+            p.ProcessarPagamento();
+
+        }
+        Console.ReadLine();
+
+
+    }
+
+}
